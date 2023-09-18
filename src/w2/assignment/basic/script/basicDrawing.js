@@ -32,6 +32,7 @@ function draw() {
   rect(800, 582, 9, 340, 3);
   //   책상 몸
 
+  //    의자
   fill('#a9a9a9');
   rect(310, 595, 15, 100);
   fill('#a9a9a9');
@@ -51,6 +52,7 @@ function draw() {
   fill('#a9a9a9');
   rect(450, 450, 15, 180, 3);
 
+  // 나사
   fill('#ffffff');
   ellipse(310, 570, 7);
   ellipse(490, 570, 7);
