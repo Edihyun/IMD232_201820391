@@ -2,7 +2,7 @@ let pos;
 let vel;
 let acc;
 let mouse;
-let vis;
+let mov;
 
 function setup() {
   setCanvasContainer('canvas', 3, 2, true);
@@ -10,7 +10,7 @@ function setup() {
 
   pos = createVector(width / 2, height / 2);
   vel = createVector(0, 0);
-  vis = createVector();
+  mov = createVector();
   acc = createVector();
   acc.mult(0.01);
 }
@@ -19,16 +19,16 @@ function draw() {
   background('white');
   update();
   mouse = createVector(mouseX, mouseY);
-  vis = p5.Vector.sub(mouse, pos);
+  mov = p5.Vector.sub(mouse, pos);
   // vis.normalize();
-  displayVis();
+  displayMov();
   display();
   displayAcc();
   displayVel();
 }
 
 function update() {
-  acc = createVector(vis.x, vis.y);
+  acc = createVector(mov.x, mov.y);
   acc.mult(0.001);
   vel.add(acc);
   vel.limit(15);
@@ -50,10 +50,10 @@ function displayVel() {
   line(pos.x, pos.y, pos.x + vel.x * 10, pos.y + vel.y * 10);
 }
 
-function displayVis() {
+function displayMov() {
   stroke('black');
-  line(pos.x, pos.y, vis.x + pos.x, vis.y + pos.y);
+  line(pos.x, pos.y, mov.x + pos.x, mov.y + pos.y);
   if (mouseIsPressed) {
-    vis.mult(-1);
+    mov.mult(-1);
   }
 }
