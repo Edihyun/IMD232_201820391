@@ -17,9 +17,6 @@ function setup() {
 function draw() {
   background('white');
   update();
-  if (mouseIsPressed && isMouseInsideCanvas()) {
-    vis *= -1;
-  }
   mouse = createVector(mouseX, mouseY);
   vis = p5.Vector.sub(mouse, pos);
   displayVis();
