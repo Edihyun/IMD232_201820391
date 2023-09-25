@@ -1,57 +1,67 @@
-let mv;
-let cv;
-let cvToMv;
 let pos;
 let vel;
 let acc;
-let radius = 50;
+let mouse;
+let mov;
 
 function setup() {
   setCanvasContainer('canvas', 3, 2, true);
   background('white');
-  cv = createVector(width / 2, height / 2);
-  mv = createVector();
-  cvToMv = createVector();
   pos = createVector(width / 2, height / 2);
   vel = createVector(0, 0);
+  mov = createVector();
   acc = p5.Vector.random2D();
-  acc.mult(0.1);
-  console.log('pos', pos);
-  console.log('vel', vel);
-  console.log('acc', acc);
+  acc.mult(0.01);
 }
 
 function draw() {
   background('white');
-  mv.set(mouseX, mouseY);
-  cvToMv = p5.Vector.sub(mv, cv);
-  //   circleWeight(20);
-  circle('black');
-  translate(cv.x, cv.y);
-  circle(0, 0, cvToMv.x, cvToMv.y);
+  update();
+  checkEdges();
+  mouse = createVector(mouseX, mouseY);
+  mov = p5.Vector.sub(mouse, pos);
+  displayMov();
+  display();
+  displayAcc();
+  displayVel();
+}
 
-  cvToMv.normalize();
-  cvToMv.mult(50);
-  strokeWeight(4);
+function update() {
+  acc = p5.Vector.random2D();
+  acc.mult(0.1);
+  vel.add(acc);
+  vel.limit(10);
+  pos.add(vel);
+}
+
+function checkEdges() {
+  if (pos.x < 0) {
+    pos.x = width;
+  } else if (pos.x > width) {
+    pos.x = 0;
+  }
+  if (pos.y < 0) {
+    pos.y = height;
+  } else if (pos.y > height) {
+    pos.y = 0;
+  }
+}
+
+function display() {
+  noStroke();
+  fill('black');
+  ellipse(pos.x, pos.y, 50);
+}
+
+function displayAcc() {
+  stroke('red');
+  line(pos.x, pos.y, pos.x + acc.x * 80, pos.y + acc.y * 80);
+}
+function displayVel() {
+  stroke('blue');
+  line(pos.x, pos.y, pos.x + vel.x * 10, pos.y + vel.y * 10);
+}
+function displayMov() {
   stroke('black');
-  line(0, 0, cvToMv.x, cvToMv.y);
-  console.log(cvToMv.mag());
-
-  //   다시
-  //   mv.set(mouseX, mouseY);
-  //   cvToMv = p5.Vector.sub(mv, cv);
-  //   cvToMv.normalize();
-  //   cvToMv.mult(50);
-
-  //   ellipes(0, 0, 50);
-  //   ellipes('black');
-
-  //   strokeWeight(2);
-  //   stroke('black');
-  //   translate(cv.x, cv.y);
-  //   line(mouseX, mouseY, cvToMv.x, cvToMv.y);
-
-  //   line(pos.x, pos.y, mouseX, mouseY);
-
-  //   circle(mouseX, mouseY, 50);
+  line(pos.x, pos.y, mov.x + pos.x, mov.y + pos.y);
 }
