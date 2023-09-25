@@ -3,7 +3,6 @@ let vel;
 let acc;
 let mouse;
 let vis;
-let clicked = false;
 
 function setup() {
   setCanvasContainer('canvas', 3, 2, true);
@@ -14,7 +13,6 @@ function setup() {
   vis = createVector();
   acc = createVector();
   acc.mult(0.01);
-  mouse = createVector(width / 2, height / 2);
 }
 
 function draw() {

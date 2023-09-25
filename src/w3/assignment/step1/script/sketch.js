@@ -3,11 +3,10 @@ let vel;
 let acc;
 let mouse;
 let vis;
-let bpos;
 
 function setup() {
   setCanvasContainer('canvas', 3, 2, true);
-  background(255);
+  background('white');
   pos = createVector(width / 2, height / 2);
   vel = createVector(0, 0);
   vis = createVector();
