@@ -55,6 +55,5 @@ function displayVis() {
   line(pos.x, pos.y, vis.x + pos.x, vis.y + pos.y);
   if (mouseIsPressed) {
     vis.mult(-1);
-  } else {
   }
 }
