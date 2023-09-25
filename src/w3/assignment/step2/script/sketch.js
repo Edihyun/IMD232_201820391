@@ -47,7 +47,7 @@ function displayVel() {
   stroke('blue');
   line(pos.x, pos.y, pos.x + vel.x * 10, pos.y + vel.y * 10);
 }
-function displaymov() {
+function displayMov() {
   stroke('black');
   line(pos.x, pos.y, mov.x + pos.x, mov.y + pos.y);
 }
