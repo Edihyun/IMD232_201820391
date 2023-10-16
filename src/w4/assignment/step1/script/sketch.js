@@ -3,7 +3,7 @@ class Body {
     this.pos = createVector(x, y);
     this.vel = createVector(0.1, 0.1);
     this.acc = createVector(0.01, 0.01);
-    this.mass = random(16, 100);
+    this.mass = random(50, 100);
     this.radius = this.mass ** (1 / 2);
     this.velvl = createVector(0, 0);
     this.accvl = createVector(0, 0);
@@ -11,7 +11,7 @@ class Body {
 
   attract(body) {
     let force = p5.Vector.sub(this.pos, body.pos);
-    let dis = constrain(force.mag(), 20, 50);
+    let distance = constrain(force.mag(), 30, 50);
     let strength = (G * (this.mass * body.mass)) / distance ** 3;
     force.setMag(strength);
     return force;
