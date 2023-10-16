@@ -11,6 +11,25 @@ class Mover {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
   }
+  checkEdges() {
+    if (this.pos.x < 0) {
+      this.pos.x -= 0;
+      this.pos.x *= -1;
+      this.pos.x += 0;
+      this.vel.x *= -1;
+    } else if (this.pos.x > width - 1) {
+      this.pos.x -= width - 1;
+      this.pos.x *= -1;
+      this.pos.x += width - 1;
+      this.vel.x *= -1;
+    }
+    if (this.pos.y > height - 1) {
+      this.pos.y -= height - 1;
+      this.pos.y *= -1;
+      this.pos.y += height - 1;
+      this.vel.y *= -1;
+    }
+  }
 
   //   선대칭
   edgeBounce() {

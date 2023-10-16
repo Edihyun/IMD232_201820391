@@ -21,6 +21,8 @@ function draw() {
   //     ball.applyForce(wind);
   //     ball2.applyForce(wind);
   //   }
+  Mover.update();
+  checkEdges.update();
   ball.applyForce(att.attreat(ball));
   ball2.applyForce(att.attreat(bal2));
   ball.update();

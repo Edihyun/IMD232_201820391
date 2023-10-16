@@ -23,6 +23,8 @@ function draw() {
   ball2.update();
   ball.edgeBounce();
   ball2.edgeBounce();
+  // ball.checkEdges();
+  // ball2.checkEdges();
   background('salmon');
   fill('white');
   ball.display();
