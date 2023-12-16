@@ -125,3 +125,7 @@ Render.lookAt(render, {
   min: { x: 0, y: 0 },
   max: { x: 700, y: 600 },
 });
+console.log('group', group);
+console.log('ropeA', ropeA);
+console.log('ropeB', ropeB);
+console.log('ropeC', ropeC);
