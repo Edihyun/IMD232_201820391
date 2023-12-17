@@ -19,7 +19,7 @@
   <body>
     <script>
       let mic;
-      const space = 3;
+      const space = 2;
       const size = Math.min(window.innerWidth, window.innerHeight);
       let start = 0;
 
@@ -39,7 +39,7 @@
 
         // 마이크 입력값 얻기
         let micLevel = mic.getLevel();
-        let amplifiedMicLevel = micLevel * 2; // 마이크 입력값을 2배로 증폭
+        let amplifiedMicLevel = micLevel * 4; // 마이크 입력값을 2배로 증폭
 
         // 역동적인 파형을 위해 미리 계산된 값 사용
         let r = map(amplifiedMicLevel, 0, 1, 0, 255);
